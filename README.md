@@ -1,9 +1,15 @@
 # PlanOut
-[![Gem Version](https://badge.fury.io/rb/planout.svg)](http://badge.fury.io/rb/planout)
-[![Build Status](https://travis-ci.org/facebook/planout.svg)](https://travis-ci.org/facebook/planout)
 
 ## Overview
-This is a rough implementation of the Experiment / logging infrastructure for running PlanOut experiments, with all the random assignment operators available in Python. This port is nearly a line-by-line port, and produces assignments that are completely consistent with those produced by the Python reference implementation.
+This is a project to attempt the completion of a Ruby port of [Facebook's PlanOut experiment framework](https://github.com/facebook/planout). There was a rough implementation but hadn't been updated in a while and Food52 has decided it would be beneficial to take this port a little further.
+
+This is a line-by-line port and should produce identical results to the Python reference design. Additional features ported by Food52 are:
+- Namespace Support
+- Additional Testing
+- Breakout of gem from `planout` to `f52-planout`
+
+## Initial Ruby Port
+Much credit is due to users @mohnish, @eytan, and @felixonmars for a lot of work on the initial port.
 
 ## Installation
 Add this line to your application's Gemfile:
