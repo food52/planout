@@ -1,0 +1,22 @@
+PATH
+  remote: .
+  specs:
+    planout (0.1.2)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    minitest (5.11.1)
+    rake (12.3.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (~> 1.7)
+  minitest (~> 5.5)
+  planout!
+  rake
+
+BUNDLED WITH
+   1.16.0

@@ -1,9 +1,11 @@
 require 'logger'
 require 'json'
+require_relative 'assignment'
+require_relative 'op_random'
 
 module PlanOut
   class Experiment
-    attr_accessor :auto_exposure_log
+    attr_accessor :name, :salt, :auto_exposure_log, :in_experiment
 
     def initialize(**inputs)
       @inputs = inputs
@@ -30,19 +32,12 @@ module PlanOut
     end
 
     def setup
+      # to be implemented by subclass
       nil
-    end
-
-    def salt=(value)
-      @_salt = value
     end
 
     def salt
       @_salt || @name
-    end
-
-    def auto_exposure_log=(value)
-      @auto_exposure_log = value
     end
 
     def configure_logger
@@ -91,6 +86,10 @@ module PlanOut
       log(as_blob(extra_payload))
     end
 
+    def log(data)
+      nil
+    end
+
     def log_exposure(extras = nil)
       @exposure_logged = true
       log_event(:exposure, extras)
@@ -109,4 +108,27 @@ module PlanOut
     end
   end
 
+  class DefaultExperiment < Experiment
+    def assign(params, *inputs)
+      params.merge!(get_default_params)
+    end
+
+    def get_default_params
+      {}
+    end
+  end
+
+  class SimpleExperiment < Experiment
+    def configure_logger
+      @logger = Logger.new(STDOUT)
+      #@loger.level = Logger::WARN
+      @logger.formatter = proc do |severity, datetime, progname, msg|
+        "logged data: #{msg}\n"
+      end
+    end
+
+    def log(data)
+      @logger.info(JSON.dump(data))
+    end
+  end
 end

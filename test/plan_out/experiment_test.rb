@@ -1,5 +1,5 @@
 require_relative '../test_helper'
-require_relative '../../examples/plan_out/voting_experiment'
+require_relative '../examples/voting_experiment'
 
 module PlanOut
   class ExperimentTest < Minitest::Test

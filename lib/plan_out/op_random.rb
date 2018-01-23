@@ -7,16 +7,33 @@ module PlanOut
     def get_unit(appended_unit = nil)
       unit = @parameters[:unit]
       unit = [unit] if !unit.is_a? Array
-      unit += appended_unit if appended_unit != nil
+
+      # if we have an appended unit, make sure it's an array
+      # and add it
+      if !appended_unit.nil?
+        appended_unit = [appended_unit] if !appended_unit.is_a? Array
+        unit += appended_unit
+      end
+
       unit
     end
 
     def get_hash(appended_unit = nil)
-      salt = @parameters[:salt]
-      salty = "#{@mapper.experiment_salt}.#{salt}"
-      unit_str = get_unit(appended_unit).join('.')
-      x = "#{salty}.#{unit_str}"
-      last_hex = (Digest::SHA1.hexdigest(x))[0..14]
+      salt_pieces = Array.new
+      if @parameters[:full_salt]
+        salt_pieces.push(@parameters[:full_salt])
+      else
+        salt_pieces.push(@mapper.experiment_salt)
+        salt_pieces.push(@parameters[:salt])
+      end
+
+      # append the unit
+      salt_pieces += get_unit(appended_unit)
+
+      # join on a seperator
+      salt = salt_pieces.join(@mapper.salt_sep)
+
+      last_hex = (Digest::SHA1.hexdigest(salt))[0..14]
       last_hex.to_i(16)
     end
 
@@ -80,6 +97,38 @@ module PlanOut
       return [] if choices.length() == 0
       rand_index = get_hash() % choices.length()
       choices[rand_index]
+    end
+  end
+
+  class BaseSample < OpRandom
+    def copy_choices
+      @args[:choices].clone
+    end
+
+    def get_num_draws(choices)
+      num_draws = choices.length
+      if @args[:draws]
+        num_draws = @args[:draws].to_i
+
+        if num_draws > choices.length
+          raise "#{self.class.name}: cannot make #{num_draws} draws when only #{choices.length} choices are available"
+        end
+      end
+      num_draws
+    end
+  end
+
+  class Sample < BaseSample
+    def simple_execute
+      choices = copy_choices
+      num_draws = get_num_draws(choices)
+
+      (choices.length - 1).downto(0) do |i|
+        j = get_hash(i) % (i + 1)
+        choices[i], choices[j] = choices[j], choices[i]
+      end
+
+      choices[0..(num_draws - 1)]
     end
   end
 end
