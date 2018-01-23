@@ -1,21 +1,21 @@
 PATH
   remote: .
   specs:
-    planout (0.1.2)
+    f52-planout (0.1.2)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    minitest (5.10.3)
-    rake (12.0.0)
+    minitest (5.11.1)
+    rake (12.3.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   bundler (~> 1.7)
+  f52-planout!
   minitest (~> 5.5)
-  planout!
   rake
 
 BUNDLED WITH

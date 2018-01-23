@@ -4,10 +4,10 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'plan_out/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "planout"
+  spec.name          = "f52-planout"
   spec.version       = PlanOut::VERSION
-  spec.authors       = ["Eytan Bakshy", "Mohnish Thallavajhula"]
-  spec.email         = ["ebakshy@gmail.com", "i@mohni.sh"]
+  spec.authors       = ["Ryan Kortmann", "Eytan Bakshy", "Mohnish Thallavajhula"]
+  spec.email         = ["ryan.kortmann@food52.com", "ebakshy@gmail.com", "i@mohni.sh"]
   spec.summary       = %q{PlanOut is a framework and programming language for online field experimentation.}
   spec.description   = %q{PlanOut is a framework and programming language for online field experimentation. PlanOut was created to make it easy to run and iterate on sophisticated experiments, while satisfying the constraints of deployed Internet services with many users.}
   spec.homepage      = "https://facebook.github.io/planout"
