@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'plan_out/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "f52-planout"
+  spec.name          = "plan_out"
   spec.version       = PlanOut::VERSION
   spec.authors       = ["Ryan Kortmann"]
   spec.email         = ["ryan.kortmann@food52.com"]
