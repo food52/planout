@@ -11,6 +11,7 @@ module PlanOut
       @inputs = inputs
       @exposure_logged = false
       @_salt = nil
+
       @in_experiment = true
       @name = self.class.name
       @auto_exposure_log = true
@@ -19,9 +20,6 @@ module PlanOut
 
       @assignment = Assignment.new(salt)
       @assigned = false
-
-      @logger = nil
-      setup
     end
 
     def _assign

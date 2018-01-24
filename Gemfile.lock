@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    planout (0.1.2)
+    plan_out (0.0.2)
 
 GEM
   remote: https://rubygems.org/
@@ -15,7 +15,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.7)
   minitest (~> 5.5)
-  planout!
+  plan_out!
   rake
 
 BUNDLED WITH

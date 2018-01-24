@@ -31,7 +31,7 @@ module PlanOut
       salt_pieces += get_unit(appended_unit)
 
       # join on a seperator
-      salt = salt_pieces.join(@mapper.salt_sep)
+      salt = salt_pieces.join(@mapper.salt_sep || '.')
 
       last_hex = (Digest::SHA1.hexdigest(salt))[0..14]
       last_hex.to_i(16)
