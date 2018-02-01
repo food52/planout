@@ -84,7 +84,6 @@ module PlanOut
 
       stop_value = get_uniform(0.0, cum_sum)
 
-      i = 0
       cum_weights.each_with_index do |cum_weight, index|
         return choices[index] if stop_value <= cum_weight
       end

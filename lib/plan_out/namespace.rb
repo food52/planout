@@ -154,7 +154,7 @@ module PlanOut
     def set_auto_exposure_logging(value)
       requires_experiment
 
-      @_experiment.set_auto_exposure_logging(value)
+      @_experiment.auto_exposure_log = value
     end
 
     def get(name, default = nil)
