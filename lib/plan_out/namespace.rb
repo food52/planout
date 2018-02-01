@@ -3,7 +3,7 @@ require_relative 'assignment'
 module PlanOut
   class Namespace
     attr_accessor :primary_unit, :default_experiment_class
-    attr_reader :num_segments, :current_experiments, :segment_allocations, :available_segments
+    attr_reader :name, :num_segments, :current_experiments, :segment_allocations, :available_segments
 
     def initialize(**inputs)
       @inputs = inputs
