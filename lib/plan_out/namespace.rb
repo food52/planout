@@ -26,7 +26,7 @@ module PlanOut
 
       setup
 
-      @available_segments = (0..@num_segments - 1).to_a
+      @available_segments = (0...@num_segments).to_a
 
       # add/remove experiments to namespace
       setup_experiments

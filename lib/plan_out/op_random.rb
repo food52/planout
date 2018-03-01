@@ -127,7 +127,7 @@ module PlanOut
         choices[i], choices[j] = choices[j], choices[i]
       end
 
-      choices[0..(num_draws - 1)]
+      choices[0...num_draws]
     end
   end
 end
