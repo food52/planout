@@ -114,6 +114,10 @@ module PlanOut
     def get_default_params
       {}
     end
+
+    def log(data)
+      nil
+    end
   end
 
   class SimpleExperiment < Experiment
