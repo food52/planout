@@ -6,7 +6,7 @@ This is a project to attempt the completion of a Ruby port of [Facebook's PlanOu
 This is a line-by-line port and should produce identical results to the Python reference design. Additional features ported by Food52 are:
 - Namespace Support
 - Additional Testing
-- Breakout of gem from `planout` to `f52-planout`
+- Breakout of gem from `planout` to `plan_out`
 
 ## Initial Ruby Port
 Much credit is due to users @mohnish, @eytan, and @felixonmars for a lot of work on the initial port.
